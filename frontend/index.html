@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zapfolio | AI Portfolio Builder</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* 1. PREVIEW BORDER (The Attractive White Device) */
+        .iframe-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 80px);
+            width: 100%;
+            background-color: transparent;
+            padding: 40px;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        #previewFrame {
+            width: 100%;
+            max-width: 1100px;
+            height: 90%;
+            background-color: white;
+            border: none;
+            border-radius: 12px;
+
+            /* The Layered Shadow Effect */
+            box-shadow:
+                0 0 0 10px rgba(255, 255, 255, 0.85),
+                0 0 0 20px rgba(255, 255, 255, 0.15),
+                0 30px 60px rgba(0, 0, 0, 0.6);
+
+            transition: all 0.3s ease;
+        }
+
+        #previewFrame:hover {
+            transform: translateY(-2px);
+            box-shadow:
+                0 0 0 10px rgba(255, 255, 255, 1),
+                0 0 0 22px rgba(255, 255, 255, 0.25),
+                0 40px 70px rgba(0, 0, 0, 0.7);
+        }
+
+        /* 2. CENTERING THE UPLOAD BUTTON */
+        /* Overriding specific styles to ensure center alignment */
+        .hero .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* Centers text and elements horizontally */
+            text-align: center;
+        }
+
+        /* Ensure the upload zone doesn't stretch too wide */
+        #uploadZone {
+            margin: 40px auto 0 auto;
+            /* Top spacing + Auto Left/Right */
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .process-pipeline {
+            /* Ensuring the vertical line stays behind */
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <div class="brand" onclick="location.reload()">
+                <div class="logo-wrapper">
+                    <svg class="logo-svg" viewBox="0 0 40 40">
+                        <path class="logo-bg" d="M5 20 L15 5 L15 15 L35 15 L25 35 L25 25 L5 25 Z" />
+                        <path class="logo-stroke" d="M5 20 L15 5 L15 15 L35 15 L25 35 L25 25 L5 25 Z" />
+                    </svg>
+                </div>
+                <div class="brand-text-col">
+                    <span class="brand-main">ZAPFOLIO</span>
+                    <span class="brand-sub">AI_ARCHITECT</span>
+                </div>
+            </div>
+
+            <div class="nav-links">
+                <a href="#tech-stack" class="nav-link">Process</a>
+                <a href="#about" class="nav-link">About AI</a>
+                <a href="#contact" class="nav-link btn-contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="view-landing">
+
+        <section class="hero">
+            <div class="bg-orb orb-1"></div>
+            <div class="bg-orb orb-2"></div>
+
+            <div class="container relative-z">
+                <div class="hero-badge fade-in-up">v2.0 ONLINE</div>
+
+                <h1 class="hero-title fade-in-up delay-1">
+                    INITIATE <span class="text-gradient">SEQUENCE</span>
+                </h1>
+
+                <p class="hero-desc fade-in-up delay-2">
+                    Upload raw resume data. The neural engine constructs your portfolio.
+                    <br>No coding required. Anonymous session active.
+                </p>
+
+                <div id="uploadZone" class="upload-zone fade-in-up delay-3">
+                    <div class="zone-content">
+                        <div class="icon-upload">📂</div>
+                        <h3 class="zone-title">Drop Source File</h3>
+                        <p class="zone-subtitle">Supported: PDF, JPG, JPEG</p>
+                        <div class="zone-trigger">
+                            <span>BROWSE SYSTEM</span>
+                        </div>
+                    </div>
+                    <input type="file" id="fileInput" hidden accept=".pdf, image/jpeg, image/png, image/jpg" />
+                </div>
+            </div>
+
+            <div class="scroll-indicator">
+                <span>HOW IT WORKS</span>
+                <div class="scroll-line"></div>
+            </div>
+        </section>
+
+        <section id="tech-stack" class="section-dark">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">SYSTEM <span class="highlight">ARCHITECTURE</span></h2>
+                    <p class="section-sub">Visualization of the autonomous generation pipeline.</p>
+                </div>
+
+                <div class="process-pipeline">
+                    <div class="pipeline-track">
+                        <div class="data-packet"></div>
+                    </div>
+
+                    <div id="tech-step-0" class="tech-card">
+                        <div class="tech-icon">👁️</div>
+                        <h3>1. Data Ingestion (OCR)</h3>
+                        <p>
+                            The system accepts raw PDF or Image files. <strong>Tesseract.js</strong> scans the document,
+                            identifying text layers and structural hierarchy to convert unstructured pixels into
+                            machine-readable JSON data.
+                        </p>
+                        <div class="tech-tag">INPUT_LAYER</div>
+                    </div>
+
+                    <div id="tech-step-1" class="tech-card">
+                        <div class="tech-icon">🧠</div>
+                        <h3>2. Neural Processing</h3>
+                        <p>
+                            <strong>Gemini 1.5 Pro</strong> analyzes the JSON. It doesn't just read; it understands
+                            career context, projects, and skills to write compelling copy and decide the best design
+                            layout for your specific profile.
+                        </p>
+                        <div class="tech-tag">LLM_LOGIC</div>
+                    </div>
+
+                    <div id="tech-step-2" class="tech-card">
+                        <div class="tech-icon">⚛️</div>
+                        <h3>3. Component Synthesis</h3>
+                        <p>
+                            Based on the AI's decision, the <strong>React Engine</strong> dynamically assembles UI
+                            components. It builds the Hero, Projects, and Experience sections in real-time, hydrating
+                            the DOM within a sandboxed environment.
+                        </p>
+                        <div class="tech-tag">RENDERING</div>
+                    </div>
+
+                    <div id="tech-step-3" class="tech-card">
+                        <div class="tech-icon">▲</div>
+                        <h3>4. Edge Deployment</h3>
+                        <p>
+                            Once approved, the <strong>Vercel SDK</strong> bundles the code. It pushes the static assets
+                            to a global edge network, generating a live, shareable URL in milliseconds without server
+                            configuration.
+                        </p>
+                        <div class="tech-tag">LIVE_URL</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section-black">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-content">
+                        <h2 class="section-title">ABOUT <span class="highlight">ZAPFOLIO</span></h2>
+                        <p class="about-text">
+                            <strong>Zapfolio</strong> is an autonomous portfolio generator designed to bridge the gap
+                            between static resumes and dynamic web identities.
+                        </p>
+                        <p class="about-text">
+                            We utilize Large Language Models (LLMs) to interpret professional history, ensuring that no
+                            manual coding is required by the end user. Just drop your file, and watch the code write
+                            itself.
+                        </p>
+                        <div class="stats-row">
+                            <div class="stat-item">
+                                <span class="stat-num">0s</span>
+                                <span class="stat-label">Latency</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-num">No</span>
+                                <span class="stat-label">Auth</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-num">AI</span>
+                                <span class="stat-label">Native</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-visual">
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="dot red"></span><span class="dot yellow"></span><span
+                                    class="dot green"></span>
+                            </div>
+                            <code>
+                                <span class="c-purple">class</span> <span class="c-yellow">Zapfolio</span> {<br>
+                                &nbsp;&nbsp;<span class="c-purple">constructor</span>() {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="c-blue">this</span>.mode = <span class="c-green">'autonomous'</span>;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="c-blue">this</span>.speed = <span class="c-orange">Infinity</span>;<br>
+                                &nbsp;&nbsp;}<br>
+                                }
+                            </code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section-dark">
+            <div class="container">
+                <div class="contact-wrapper">
+                    <h2 class="section-title">ESTABLISH <span class="highlight">CONNECTION</span></h2>
+
+                    <form class="cyber-form" onsubmit="event.preventDefault(); alert('TRANSMISSION SENT.');">
+                        <div class="form-group">
+                            <label>IDENTIFIER_NAME</label>
+                            <input type="text" placeholder="John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label>COMM_CHANNEL (EMAIL)</label>
+                            <input type="email" placeholder="user@net.com">
+                        </div>
+                        <div class="form-group">
+                            <label>DATA_PACKET (MESSAGE)</label>
+                            <textarea rows="4" placeholder="Enter query..."></textarea>
+                        </div>
+                        <button class="btn btn-neon full-width">TRANSMIT DATA</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>ZAPFOLIO_CORE © 2024 // ALL RIGHTS RESERVED</p>
+        </footer>
+
+    </main>
+
+    <div id="view-loading" class="loading-overlay hidden">
+        <div class="loader-terminal">
+            <div class="terminal-header">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span class="term-title">PROCESS_DAEMON</span>
+            </div>
+            <div id="terminalLogs" class="terminal-body"></div>
+            <div class="progress-wrapper">
+                <div id="progressFill" class="progress-fill"></div>
+            </div>
+            <div class="cyber-glitch" data-text="PROCESSING...">PROCESSING...</div>
+        </div>
+    </div>
+
+    <div id="view-editor" class="editor-container hidden">
+        <div class="editor-header">
+            <div class="editor-left">
+                <div class="status-indicator">
+                    <span class="status-dot"></span>
+                    LIVE
+                </div>
+                <span id="fileNameDisplay" class="file-tag">file.pdf</span>
+            </div>
+
+            <div class="editor-center">
+                <button id="btnDeploy" class="btn btn-neon btn-large">
+                    <span class="btn-text">🚀 INITIATE VERCEL DEPLOY</span>
+                </button>
+            </div>
+
+            <div class="editor-right">
+                <button id="btnClose" class="btn btn-ghost">ABORT</button>
+            </div>
+        </div>
+
+        <div class="iframe-wrapper">
+            <iframe id="previewFrame" class="preview-frame"></iframe>
+            <div id="emptyState" class="empty-state">
+                <div class="blink-cursor">_</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
