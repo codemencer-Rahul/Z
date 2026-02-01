@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
             form.append('filename', fileName);
            
             console.log("Sending request to backend...");
-            const res = await fetch("http://localhost:3000/file", {
+            const res = await fetch("https://z-sdjt.onrender.com/file", {
                 method: "POST",
                 body: form
             });
