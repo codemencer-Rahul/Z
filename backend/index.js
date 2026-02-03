@@ -103,7 +103,7 @@ app.post('/file',upload.single('file'),async(req,res)=>{
                 },
                 timestamp: uploadResult.timestamp
             });
-            
+            fs.unlink(uploadedpath, (err) => { if (err) console.log('Error:', err); });
         } catch (githubError) {
             // GitHub upload threw an error, but we still have HTML
             console.error('GitHub upload error:', githubError.message);
